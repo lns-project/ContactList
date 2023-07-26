@@ -22,7 +22,7 @@ class DataManager {
                            "334227581", "434167649", "162477746",
                            "894850979", "993514533", "530621645"]
     
-    var emails: [String] = ["wikasap181@weizixu.com", "hajemor_oro59@mail.com",
+    var emails: [String] = ["wikasap18@weizixu.com", "hajemor_oro59@mail.com",
                            "gicohin_uwa69@mail.com", "nugosu-dotu94@mail.com",
                            "toyonuw-ahu29@mail.com", "kiro-simini45@hotmail.com",
                            "kifac_apego49@outlook.com", "ney_okatitu21@yahoo.com",
