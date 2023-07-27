@@ -8,10 +8,12 @@
 import UIKit
 
 class PersonsListViewController: UITableViewController {
-    var persons = DataManager().getPersonList()
+    
+    var persons: [Person] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadPersonsList()
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         persons.count
@@ -30,9 +32,16 @@ class PersonsListViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let detailsVC = segue.destination as? PersonDetailViewController else { return }
-        guard let indexPath = tableView.indexPathForSelectedRow else { return }
-        detailsVC.persons = persons[indexPath.row]
+            if let indexPath = tableView.indexPathForSelectedRow {
+                guard let detailVC = segue.destination as? PersonDetailViewController else { return }
+                detailVC.person = persons[indexPath.row]
+            }
+    }
+    
+    private func loadPersonsList() {
+        if let tabbar = self.tabBarController as? TabBarViewController {
+            persons = tabbar.persons
+        }
     }
 }
 
