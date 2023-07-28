@@ -12,17 +12,16 @@ import UIKit
 
 class TabBarViewController: UITabBarController {
     
-    let persons = DataManager().getPersonList()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         generateViewControllers()
     }
     
     private func generateViewControllers() {
-        guard let personsVC = viewControllers?.first as? PersonsListViewController else { return }
-        guard let contactListVC = viewControllers?.last as? ContactListViewController else { return }
-        
+        guard let personsNVC = viewControllers?.first as? UINavigationController,
+              let personsVC = personsNVC.topViewController as? PersonsListViewController else { return }
+        guard let contactListNVC = viewControllers?.last as? UINavigationController,
+              let contactListVC = contactListNVC.topViewController as? ContactListViewController else { return }
         let persons = DataManager().getPersonList()
         personsVC.persons = persons
         contactListVC.persons = persons

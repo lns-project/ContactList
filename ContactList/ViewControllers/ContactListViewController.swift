@@ -13,7 +13,6 @@ class ContactListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadPersonsList()
     }
     
     // MARK: - Table view data source
@@ -30,7 +29,6 @@ class ContactListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         let person = persons[indexPath.section]
-        
         
         switch indexPath.row {
         case 0:
@@ -57,11 +55,5 @@ class ContactListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    private func loadPersonsList() {
-        if let tabbar = self.tabBarController as? TabBarViewController {
-            persons = tabbar.persons
-        }
     }
 }
